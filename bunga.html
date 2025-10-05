@@ -12,10 +12,10 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: #000; /* latar hitam */
+      background: #000;
       font-family: 'Poppins', sans-serif;
       overflow: hidden;
-      transition: background 0.5s;
+      transition: background 0.5s, opacity 0.6s ease;
     }
 
     h1 {
@@ -28,34 +28,30 @@
 
     h2 {
       font-size: 32px;
-      color: #222; /* mulai gelap */
+      color: #222;
       position: relative;
       overflow: hidden;
       margin: 0;
       text-align: center;
     }
 
-    /* ✨ Teks menyala dari kiri ke kanan sekali */
+    /* ✨ Animasi highlight teks nama */
     h2::after {
       content: '💖 Christine Gracia Young 💖';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      color: #ff69b4; /* pink menyala */
+      color: #ff69b4;
       text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff69b4, 0 0 20px #ff69b4, 0 0 30px #ff69b4;
       overflow: hidden;
       clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-      animation: shineLeftToRight 3s forwards; /* forwards agar tetap terlihat */
+      animation: shineLeftToRight 3s forwards;
     }
 
     @keyframes shineLeftToRight {
-      0% {
-        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-      }
-      100% {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-      }
+      0% { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); }
+      100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
     }
 
     /* ✨ Animasi huruf H A L L O */
@@ -94,7 +90,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Tombol lucu */
+    /* 💕 Tombol lucu */
     button {
       background-color: white;
       color: #ff69b4;
@@ -121,11 +117,11 @@
       50% { transform: translateY(-10px); }
     }
 
-    /* 💕 Gelembung lucu pink */
+    /* 🌷 Gelembung pink */
     .bubble {
       position: absolute;
       bottom: -100px;
-      background: rgba(255,105,180,0.4); /* pink transparan */
+      background: rgba(255,105,180,0.4);
       border-radius: 50%;
       animation: rise 6s infinite ease-in;
     }
@@ -153,6 +149,7 @@
   <button onclick="nextPage()">Lanjutkan ➜</button>
 
   <script>
+    // ✨ Efek transisi halus ke halaman bunga
     function nextPage() {
       document.body.style.opacity = '0';
       setTimeout(() => {
@@ -160,6 +157,7 @@
       }, 600);
     }
 
+    // 🌷 Efek gelembung lucu
     function createBubble() {
       const bubble = document.createElement('div');
       bubble.classList.add('bubble');
@@ -176,6 +174,11 @@
     }
 
     setInterval(createBubble, 400);
+
+    // Efek fade-in saat masuk
+    window.onload = () => {
+      document.body.style.opacity = '1';
+    };
   </script>
 </body>
 </html>
