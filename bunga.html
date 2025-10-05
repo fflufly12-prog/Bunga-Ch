@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>H A L L O - Christine 💖</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #000; /* latar hitam */
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+      transition: background 0.5s;
+    }
+
+    h1 {
+      font-size: 80px;
+      color: white;
+      letter-spacing: 15px;
+      text-shadow: 0 0 20px rgba(255,255,255,0.8);
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 32px;
+      color: #222; /* mulai gelap */
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+      text-align: center;
+    }
+
+    /* ✨ Teks menyala dari kiri ke kanan sekali */
+    h2::after {
+      content: '💖 Christine Gracia Young 💖';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      color: #ff69b4; /* pink menyala */
+      text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff69b4, 0 0 20px #ff69b4, 0 0 30px #ff69b4;
+      overflow: hidden;
+      clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+      animation: shineLeftToRight 3s forwards; /* forwards agar tetap terlihat */
+    }
+
+    @keyframes shineLeftToRight {
+      0% {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+      }
+      100% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      }
+    }
+
+    /* ✨ Animasi huruf H A L L O */
+    .letter {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: showLetter 1s forwards;
+    }
+
+    .letter:nth-child(1) { animation-delay: 0.2s; }
+    .letter:nth-child(2) { animation-delay: 0.4s; }
+    .letter:nth-child(3) { animation-delay: 0.6s; }
+    .letter:nth-child(4) { animation-delay: 0.8s; }
+    .letter:nth-child(5) { animation-delay: 1s; }
+
+    @keyframes showLetter {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* 🌸 Teks gift */
+    .gift-text {
+      color: white;
+      font-size: 20px;
+      margin-top: 15px;
+      opacity: 0;
+      animation: fadeInUp 2s ease-in-out forwards;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Tombol lucu */
+    button {
+      background-color: white;
+      color: #ff69b4;
+      border: none;
+      padding: 15px 40px;
+      font-size: 22px;
+      border-radius: 40px;
+      cursor: pointer;
+      margin-top: 40px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.7);
+      animation: float 3s ease-in-out infinite;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff1493;
+      color: white;
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(255,255,255,0.9);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* 💕 Gelembung lucu pink */
+    .bubble {
+      position: absolute;
+      bottom: -100px;
+      background: rgba(255,105,180,0.4); /* pink transparan */
+      border-radius: 50%;
+      animation: rise 6s infinite ease-in;
+    }
+
+    @keyframes rise {
+      from { transform: translateY(0) scale(1); opacity: 1; }
+      to { transform: translateY(-110vh) scale(1.3); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>
+    <span class="letter">H</span>
+    <span class="letter">A</span>
+    <span class="letter">L</span>
+    <span class="letter">L</span>
+    <span class="letter">O</span>
+  </h1>
+  
+  <h2>💖 Christine Gracia Young 💖</h2>
+
+  <p class="gift-text">🎁 Ada sedikit gift ni buat Christine hehe 💕</p>
+
+  <button onclick="nextPage()">Lanjutkan ➜</button>
+
+  <script>
+    function nextPage() {
+      document.body.style.opacity = '0';
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 600);
+    }
+
+    function createBubble() {
+      const bubble = document.createElement('div');
+      bubble.classList.add('bubble');
+      const size = Math.random() * 40 + 20;
+      bubble.style.width = `${size}px`;
+      bubble.style.height = `${size}px`;
+      bubble.style.left = `${Math.random() * 100}vw`;
+      bubble.style.animationDuration = `${Math.random() * 3 + 3}s`;
+      document.body.appendChild(bubble);
+
+      setTimeout(() => {
+        bubble.remove();
+      }, 6000);
+    }
+
+    setInterval(createBubble, 400);
+  </script>
+</body>
+</html>
